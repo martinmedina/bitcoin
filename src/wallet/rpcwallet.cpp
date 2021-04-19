@@ -162,6 +162,7 @@ UniValue getnewaddress(const JSONRPCRequest& request)
 
     OutputType output_type = g_address_type;
     if (!request.params[1].isNull()) {
+
         output_type = ParseOutputType(request.params[1].get_str(), g_address_type);
         if (output_type == OUTPUT_TYPE_NONE) {
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, strprintf("Unknown address type '%s'", request.params[1].get_str()));

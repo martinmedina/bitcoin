@@ -546,6 +546,11 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     std::map<uint256, int64_t> setTxIndex;
     int i = 0;
     for (const auto& it : pblock->vtx) {
+
+        if (i == 103) {
+            break;
+        }
+
         const CTransaction& tx = *it;
         uint256 txHash = tx.GetHash();
         setTxIndex[txHash] = i++;
